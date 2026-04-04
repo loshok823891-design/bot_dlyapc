@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0f0f0f;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, #00bfff, #00ffaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.build-summary {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+}
+
+.total {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00ffaa;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.categories button {
+    background: #252525;
+    color: white;
+    border: none;
+    padding: 14px 10px;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.categories button:hover {
+    background: #00bfff;
+    transform: translateY(-2px);
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.item-card {
+    background: #1a1a1a;
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid #333;
+    transition: all 0.2s;
+}
+
+.item-card:hover {
+    border-color: #00bfff;
+    transform: scale(1.03);
+}
+
+.item-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #00ffaa;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.add-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background: #00bfff;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}

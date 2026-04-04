@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ПК-Конструктор</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🛠 ПК-Конструктор</h1>
+        <p>Собери идеальный компьютер</p>
+    </div>
+
+    <div class="build-summary" id="buildSummary">
+        <h2>Твоя сборка</h2>
+        <div id="componentsList">Пока ничего не выбрано</div>
+        <div class="total" id="totalPrice">Итого: 0 ₽</div>
+    </div>
+
+    <div class="categories">
+        <button onclick="showCategory('cpu')">🧠 Процессор</button>
+        <button onclick="showCategory('gpu')">🎮 Видеокарта</button>
+        <button onclick="showCategory('ram')">💾 ОЗУ</button>
+        <button onclick="showCategory('motherboard')">🔌 Материнская плата</button>
+        <button onclick="showCategory('ssd')">💾 SSD</button>
+        <button onclick="showCategory('psu')">⚡ БП</button>
+        <button onclick="showCategory('case')">📦 Корпус</button>
+    </div>
+
+    <div id="items" class="items-grid"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
