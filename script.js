@@ -1,11 +1,11 @@
-// ================================================
+// 
 // скрипт мини-приложения
-// ================================================
+// 
 
-// здесь хранится всё, что выбрал пользователь
+// здесь хранятся все комплектующие, которые выбрал пользователь
 let currentBuild = {};
 
-// ====================== большая база комплектующих ======================
+// большая база комплектующих
 const componentsDB = {
     cpu: [
         {id:1, name:"AMD Ryzen 5 9600X", price:24990},
@@ -14,73 +14,85 @@ const componentsDB = {
         {id:4, name:"Intel Core i5-14600K", price:32990},
         {id:5, name:"Intel Core i7-14700K", price:44990},
     ],
-    gpu: [
-        {id:1, name:"RTX 5070 12GB", price:67990},
-        {id:2, name:"RTX 5070 Ti 16GB", price:89990},
-        {id:3, name:"RX 7800 XT 16GB", price:58990},
+    motherboard: [
+        {id:1, name:"MSI B650M Gaming Plus WiFi", price:9490},
+        {id:2, name:"Gigabyte B650 Gaming X AX", price:14490},
+        {id:3, name:"ASUS ROG Strix B650-E", price:28990},
     ],
     ram: [
         {id:1, name:"Kingston Fury Beast 32GB DDR5-6000", price:8990},
         {id:2, name:"Corsair Vengeance 32GB DDR5-6400", price:10990},
         {id:3, name:"Kingston Fury Beast 64GB DDR5-6000", price:18990},
     ],
-    motherboard: [
-        {id:1, name:"MSI B650M Gaming Plus WiFi", price:9490},
-        {id:2, name:"Gigabyte B650 Gaming X AX", price:14490},
+    gpu: [
+        {id:1, name:"RTX 5070 12GB", price:67990},
+        {id:2, name:"RTX 5070 Ti 16GB", price:89990},
+        {id:3, name:"RX 7800 XT 16GB", price:58990},
     ],
     ssd: [
         {id:1, name:"Samsung 990 EVO 1 ТБ", price:7990},
         {id:2, name:"Kingston NV2 1 ТБ", price:6990},
+        {id:3, name:"WD Black SN850X 2 ТБ", price:14990},
     ],
     psu: [
         {id:1, name:"Deepcool PF750 750W", price:8990},
         {id:2, name:"Corsair RM850x 850W", price:11990},
+        {id:3, name:"be quiet! Pure Power 12 850W", price:12490},
     ],
     case: [
         {id:1, name:"Lian Li Lancool 216", price:9490},
         {id:2, name:"Deepcool CC560 ARGB", price:4990},
+        {id:3, name:"NZXT H6 Flow", price:12990},
     ]
 };
 
-// ====================== готовые сборки ======================
-const readyBuilds = [
-    {
-        name: "💼 офисная / учебная",
-        price: 58900,
-        items: {
-            cpu: {name: "AMD Ryzen 5 9600X", price: 24990},
-            ram: {name: "Kingston Fury Beast 32GB DDR5-6000", price: 8990},
-            gpu: {name: "RTX 4060 8GB", price: 32990},
-            ssd: {name: "Samsung 990 EVO 1 ТБ", price: 7990}
-        }
+// ссылки на магазины
+const storeLinks = {
+    cpu: {
+        ozon: "https://www.ozon.ru/category/protsessory-15726/",
+        dns: "https://www.dns-shop.ru/catalog/17a899cd16404e77/processory/"
     },
-    {
-        name: "🎮 игровая 1440p",
-        price: 148900,
-        items: {
-            cpu: {name: "AMD Ryzen 7 9700X", price: 32990},
-            ram: {name: "Corsair Vengeance 32GB DDR5-6400", price: 10990},
-            gpu: {name: "RTX 5070 Ti 16GB", price: 89990},
-            ssd: {name: "Kingston NV2 2 ТБ", price: 12990}
-        }
+    motherboard: {
+        ozon: "https://www.ozon.ru/category/materinskie-platy-15725/",
+        dns: "https://www.dns-shop.ru/catalog/17a89a0416404e77/materinskie-platy/"
+    },
+    ram: {
+        ozon: "https://www.ozon.ru/category/operativnaya-pamyat-15724/",
+        dns: "https://www.dns-shop.ru/catalog/2d514a593baa7fd7/operativnaa-pamat/"
+    },
+    gpu: {
+        ozon: "https://www.ozon.ru/category/videokarty-15721/",
+        dns: "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/"
+    },
+    ssd: {
+        ozon: "https://www.ozon.ru/category/ssd-nakopiteli-15712/",
+        dns: "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/"
+    },
+    psu: {
+        ozon: "https://www.ozon.ru/category/bloki-pitaniya-15727/",
+        dns: "https://www.dns-shop.ru/catalog/17a89c2216404e77/bloki-pitania/"
+    },
+    case: {
+        ozon: "https://www.ozon.ru/category/korpusa-dlya-kompyuterov-15734/",
+        dns: "https://www.dns-shop.ru/catalog/17a89c5616404e77/korpusa/"
     }
-];
+};
 
 // показываем товары выбранной категории
 function showCategory(category) {
     const container = document.getElementById('items');
     container.innerHTML = '';
 
-    // показываем кнопки ozon и dns
+    // кнопки магазинов
     const linkDiv = document.createElement('div');
     linkDiv.style = "grid-column: 1 / -1; text-align: center; margin-bottom: 15px;";
     linkDiv.innerHTML = `
-        <a href="https://www.ozon.ru/category/protsessory-15726/" target="_blank" style="background:#ff6600; color:white; padding:10px 18px; border-radius:10px; margin:0 5px; text-decoration:none;">🛒 ozon</a>
-        <a href="https://www.dns-shop.ru/catalog/17a899cd16404e77/processory/" target="_blank" style="background:#ff6600; color:white; padding:10px 18px; border-radius:10px; margin:0 5px; text-decoration:none;">🛒 dns</a>
+        <a href="${storeLinks[category].ozon}" target="_blank" style="background:#ff6600; color:white; padding:10px 18px; border-radius:10px; margin:0 5px; text-decoration:none;">🛒 ozon</a>
+        <a href="${storeLinks[category].dns}" target="_blank" style="background:#ff6600; color:white; padding:10px 18px; border-radius:10px; margin:0 5px; text-decoration:none;">🛒 dns</a>
     `;
     container.appendChild(linkDiv);
 
-    // показываем карточки товаров
+    // товары
     componentsDB[category].forEach(item => {
         const card = document.createElement('div');
         card.className = 'item-card';
@@ -95,13 +107,11 @@ function showCategory(category) {
     });
 }
 
-// добавляем выбранный товар в сборку
 function addToBuild(category, name, price) {
     currentBuild[category] = {name, price};
     updateBuildSummary();
 }
 
-// обновляем список выбранных комплектующих
 function updateBuildSummary() {
     const list = document.getElementById('componentsList');
     let html = '';
@@ -117,35 +127,31 @@ function updateBuildSummary() {
     document.getElementById('totalPrice').textContent = `итого: ${total.toLocaleString('ru-RU')} ₽`;
 }
 
-// показываем готовые сборки
+// готовые сборки
 function showReadyBuilds() {
     const container = document.getElementById('items');
     container.innerHTML = '<h2 style="grid-column:1/-1; text-align:center; margin-bottom:15px;">📦 готовые сборки</h2>';
 
-    readyBuilds.forEach((build, index) => {
+    const builds = [
+        {name:" офисная", price:58900, items:["Ryzen 5 9600X", "32GB DDR5", "RTX 4060"]},
+        {name:" игровая", price:148900, items:["Ryzen 7 9700X", "32GB DDR5", "RTX 5070 Ti"]},
+        {name:" максимальная", price:289000, items:["Ryzen 9 9900X", "64GB DDR5", "RTX 5080"]}
+    ];
+
+    builds.forEach(build => {
         const card = document.createElement('div');
         card.className = 'item-card';
         card.innerHTML = `
             <h3>${build.name}</h3>
-            <p style="margin:8px 0; font-size:14px;">${Object.values(build.items).map(i => i.name).join(" • ")}</p>
+            <p style="margin:8px 0; font-size:14px;">${build.items.join(" • ")}</p>
             <div class="price">${build.price.toLocaleString('ru-RU')} ₽</div>
-            <button class="add-btn" onclick="loadReadyBuild(${index})">
-                выбрать эту сборку
-            </button>
+            <button class="add-btn" onclick="alert('сборка выбрана!')">выбрать</button>
         `;
         container.appendChild(card);
     });
 }
 
-// автоматически добавляем все комплектующие из готовой сборки
-function loadReadyBuild(index) {
-    const build = readyBuilds[index];
-    currentBuild = {...build.items};   // копируем все комплектующие
-    updateBuildSummary();
-    alert(`✅ сборка "${build.name}" загружена!`);
-}
-
-// показываем видео пособие
+// видео пособие
 function showVideoGuide() {
     const container = document.getElementById('items');
     container.innerHTML = `
@@ -161,7 +167,7 @@ function showVideoGuide() {
     `;
 };
 
-// при открытии страницы сразу показываем процессоры
+// запуск приложения
 window.onload = () => {
     showCategory('cpu');
 };
