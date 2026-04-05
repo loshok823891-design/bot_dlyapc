@@ -1,3 +1,5 @@
+/* 
+   стили мини-приложения */
 
 * {
     margin: 0;
@@ -13,6 +15,7 @@ body {
     padding: 15px;
 }
 
+/* Заголовок */
 .header {
     text-align: center;
     margin-bottom: 25px;
@@ -22,15 +25,19 @@ body {
     font-size: 28px;
     margin-bottom: 5px;
     
+    /*текст */
     background: linear-gradient(90deg, #00bfff, #00ffaa);
     
+   
     background-clip: text;
     -webkit-background-clip: text;     
+    
     
     color: transparent;
     -webkit-text-fill-color: transparent;
 }
 
+/* текущая сборка */
 .build-summary {
     background: #1a1a1a;
     border-radius: 16px;
@@ -47,6 +54,7 @@ body {
     text-align: center;
 }
 
+/* кнопки категорий */
 .categories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -55,7 +63,7 @@ body {
 }
 
 .categories button {
-    background: #252525;
+    background: #9b3939;
     color: white;
     border: none;
     padding: 14px;
@@ -70,6 +78,7 @@ body {
     transform: translateY(-2px);
 }
 
+/* карточки товаров */
 .items-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -90,7 +99,7 @@ body {
 }
 
 .price {
-    color: #00ffaa;
+    color: #22775b;
     font-weight: 600;
     font-size: 17px;
 }
@@ -99,7 +108,7 @@ body {
     margin-top: 10px;
     width: 100%;
     padding: 12px;
-    background: #00bfff;
+    background: #96c1cf;
     color: black;
     border: none;
     border-radius: 10px;
