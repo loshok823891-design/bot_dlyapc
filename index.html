@@ -9,15 +9,19 @@
 <body>
     
     <div class="header">
-        <h1> ПК-Конструктор</h1>
-        <p>собери свой компьютер</p>
+        <h1>🛠 ПК-Конструктор</h1>
+        <p>Выбери раздел и собирай компьютер</p>
     </div>
 
-    <!-- Навигация -->
+    <!-- Отдельные кнопки для разделов -->
     <div class="nav-buttons">
-        <button onclick="showCategory('cpu')"> комплектующие</button>
-        <button onclick="showReadyBuilds()"> готовые сборки</button>
-        <button onclick="showVideoGuide()"> видео пособие</button>
+        <button onclick="showCategory('cpu')">Процессор</button>
+        <button onclick="showCategory('motherboard')">🔌 Материнская плата</button>
+        <button onclick="showCategory('ram')">Оперативная память</button>
+        <button onclick="showCategory('gpu')"> Видеокарта</button>
+        <button onclick="showCategory('ssd')"> SSD накопитель</button>
+        <button onclick="showCategory('psu')"> Блок питания</button>
+        <button onclick="showCategory('case')"> Корпус</button>
     </div>
 
     <!-- Текущая сборка -->
@@ -27,7 +31,7 @@
         <div class="total" id="totalPrice">итого: 0 ₽</div>
     </div>
 
-    <!-- Основная область -->
+    <!-- Область для товаров и ссылок -->
     <div id="items" class="items-grid"></div>
 
     <script src="script.js"></script>
