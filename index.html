@@ -9,25 +9,25 @@
 <body>
     
     <div class="header">
-        <h1>🛠 ПК-Конструктор</h1>
-        <p>Собери компьютер своей мечты</p>
+        <h1> ПК-Конструктор</h1>
+        <p>собери свой компьютер</p>
     </div>
 
-    <!-- навигация -->
+    <!-- Навигация -->
     <div class="nav-buttons">
-        <button onclick="showCategory('cpu')"> Комплектующие</button>
-        <button onclick="showReadyBuilds()"> сборки</button>
+        <button onclick="showCategory('cpu')"> комплектующие</button>
+        <button onclick="showReadyBuilds()"> готовые сборки</button>
         <button onclick="showVideoGuide()"> видео пособие</button>
     </div>
 
-    <!-- сборка -->
+    <!-- Текущая сборка -->
     <div class="build-summary" id="buildSummary">
-        <h2>Твоя сборка</h2>
-        <div id="componentsList">Пока ничего не выбрано</div>
-        <div class="total" id="totalPrice">Итого: 0 ₽</div>
+        <h2>твоя сборка</h2>
+        <div id="componentsList">пока ничего не выбрано</div>
+        <div class="total" id="totalPrice">итого: 0 ₽</div>
     </div>
 
-    <!-- Основа -->
+    <!-- Основная область -->
     <div id="items" class="items-grid"></div>
 
     <script src="script.js"></script>
