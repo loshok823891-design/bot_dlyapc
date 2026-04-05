@@ -2,37 +2,39 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПК-Конструктор</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   
+
     <div class="header">
         <h1>🛠 ПК-Конструктор</h1>
-        <p>Выбери раздел и собирай компьютер</p>
+        <p>простая версия</p>
     </div>
 
-    <!-- Отдельные кнопки для разделов -->
+    <!-- простые кнопки -->
     <div class="nav-buttons">
-        <button onclick="showCategory('cpu')">Процессор</button>
-        <button onclick="showCategory('motherboard')"> Материнская плата</button>
-        <button onclick="showCategory('ram')">Оперативная память</button>
-        <button onclick="showCategory('gpu')">Видеокарта</button>
-        <button onclick="showCategory('ssd')">SSD накопитель</button>
-        <button onclick="showCategory('psu')">Блок питания</button>
-        <button onclick="showCategory('case')">Корпус</button>
-        <button onclick="showVideoGuide()">🎥 Видео пособие</button>
+        <button onclick="showCategory('cpu')">процессор</button>
+        <button onclick="showCategory('gpu')">видеокарта</button>
+        <button onclick="showCategory('ram')">оперативка</button>
+        <button onclick="showCategory('motherboard')">материнка</button>
+        <button onclick="showCategory('ssd')">ssd</button>
+        <button onclick="showCategory('psu')">блок питания</button>
+        <button onclick="showCategory('case')">корпус</button>
+        
+        <button onclick="showReadyBuilds()">готовые сборки</button>
+        <button onclick="showVideoGuide()">видео пособие</button>
     </div>
 
-    <!-- Текущая сборка -->
+    <!-- текущая сборка -->
     <div class="build-summary" id="buildSummary">
         <h2>твоя сборка</h2>
-        <div id="componentsList">пока ничего не выбрано</div>
+        <div id="componentsList">пока пусто</div>
         <div class="total" id="totalPrice">итого: 0 ₽</div>
     </div>
 
-    <!-- Область для товаров и ссылок -->
+    <!-- сюда будут появляться товары -->
     <div id="items" class="items-grid"></div>
 
     <script src="script.js"></script>
