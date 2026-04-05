@@ -31,41 +31,69 @@ const componentsDB = {
     ssd: [
         {id:1, name:"Samsung 990 EVO 1 ТБ", price:7990},
         {id:2, name:"Kingston NV2 1 ТБ", price:6990},
+        {id:3, name:"WD Black SN850X 2 ТБ", price:14990},
     ],
     psu: [
         {id:1, name:"Deepcool PF750 750W", price:8990},
         {id:2, name:"Corsair RM850x 850W", price:11990},
+        {id:3, name:"be quiet! Pure Power 12 850W", price:12490},
     ],
     case: [
         {id:1, name:"Lian Li Lancool 216", price:9490},
         {id:2, name:"Deepcool CC560 ARGB", price:4990},
+        {id:3, name:"NZXT H6 Flow", price:12990},
     ]
 };
 
 // ====================== ссылки на ozon и dns ======================
 const storeLinks = {
-    cpu: { ozon: "https://www.ozon.ru/category/protsessory-15726/", dns: "https://www.dns-shop.ru/catalog/17a899cd16404e77/processory/" },
-    motherboard: { ozon: "https://www.ozon.ru/category/materinskie-platy-15725/", dns: "https://www.dns-shop.ru/catalog/17a89a0416404e77/materinskie-platy/" },
-    ram: { ozon: "https://www.ozon.ru/category/operativnaya-pamyat-15724/", dns: "https://www.dns-shop.ru/catalog/2d514a593baa7fd7/operativnaa-pamat/" },
-    gpu: { ozon: "https://www.ozon.ru/category/videokarty-15721/", dns: "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/" },
-    ssd: { ozon: "https://www.ozon.ru/category/ssd-nakopiteli-15712/", dns: "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/" },
-    psu: { ozon: "https://www.ozon.ru/category/bloki-pitaniya-15727/", dns: "https://www.dns-shop.ru/catalog/17a89c2216404e77/bloki-pitania/" },
-    case: { ozon: "https://www.ozon.ru/category/korpusa-dlya-kompyuterov-15734/", dns: "https://www.dns-shop.ru/catalog/17a89c5616404e77/korpusa/" }
+    cpu: {
+        ozon: "https://www.ozon.ru/category/protsessory-15726/",
+        dns: "https://www.dns-shop.ru/catalog/17a899cd16404e77/processory/"
+    },
+    motherboard: {
+        ozon: "https://www.ozon.ru/category/materinskie-platy-15725/",
+        dns: "https://www.dns-shop.ru/catalog/17a89a0416404e77/materinskie-platy/"
+    },
+    ram: {
+        ozon: "https://www.ozon.ru/category/operativnaya-pamyat-15724/",
+        dns: "https://www.dns-shop.ru/catalog/2d514a593baa7fd7/operativnaa-pamat/"
+    },
+    gpu: {
+        ozon: "https://www.ozon.ru/category/videokarty-15721/",
+        dns: "https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/"
+    },
+    ssd: {
+        ozon: "https://www.ozon.ru/category/ssd-nakopiteli-15712/",
+        dns: "https://www.dns-shop.ru/catalog/8a9ddfba20724e77/ssd-nakopiteli/"
+    },
+    psu: {
+        ozon: "https://www.ozon.ru/category/bloki-pitaniya-15727/",
+        dns: "https://www.dns-shop.ru/catalog/17a89c2216404e77/bloki-pitania/"
+    },
+    case: {
+        ozon: "https://www.ozon.ru/category/korpusa-dlya-kompyuterov-15734/",
+        dns: "https://www.dns-shop.ru/catalog/17a89c5616404e77/korpusa/"
+    }
 };
 
-// показываем категорию
+// показываем категорию и ссылки на магазины
 function showCategory(category) {
     const container = document.getElementById('items');
     container.innerHTML = '';
 
+    // кнопки ozon и dns
     const linkDiv = document.createElement('div');
     linkDiv.style = "grid-column: 1 / -1; text-align: center; margin-bottom: 15px;";
     linkDiv.innerHTML = `
-        <a href="${storeLinks[category].ozon}" target="_blank" style="background:#ff6600; color:white; padding:10px 18px; border-radius:10px; margin:0 5px; text-decoration:none;">🛒 ozon</a>
-        <a href="${storeLinks[category].dns}" target="_blank" style="background:#ff6600; color:white; padding:10px 18px; border-radius:10px; margin:0 5px; text-decoration:none;">🛒 dns</a>
+        <a href="${storeLinks[category].ozon}" target="_blank" 
+           style="background:#ff6600; color:white; padding:10px 18px; border-radius:10px; margin:0 5px; text-decoration:none;">🛒 ozon</a>
+        <a href="${storeLinks[category].dns}" target="_blank" 
+           style="background:#ff6600; color:white; padding:10px 18px; border-radius:10px; margin:0 5px; text-decoration:none;">🛒 dns</a>
     `;
     container.appendChild(linkDiv);
 
+    // товары категории
     componentsDB[category].forEach(item => {
         const card = document.createElement('div');
         card.className = 'item-card';
@@ -100,31 +128,12 @@ function updateBuildSummary() {
     document.getElementById('totalPrice').textContent = `итого: ${total.toLocaleString('ru-RU')} ₽`;
 }
 
-// ====================== ГОТОВЫЕ СБОРКИ ======================
+// готовые сборки (можно расширить позже)
 function showReadyBuilds() {
-    const container = document.getElementById('items');
-    container.innerHTML = '<h2 style="grid-column:1/-1; text-align:center; margin-bottom:15px;">📦 готовые сборки</h2>';
-
-    const builds = [
-        {name:"💼 офисная / учебная", price:58900, items:["Ryzen 5 9600X", "32GB DDR5", "RTX 4060"]},
-        {name:"🎮 игровая 1440p", price:148900, items:["Ryzen 7 9700X", "32GB DDR5", "RTX 5070 Ti"]},
-        {name:"🚀 максимальная", price:289000, items:["Ryzen 9 9900X", "64GB DDR5", "RTX 5080"]}
-    ];
-
-    builds.forEach(build => {
-        const card = document.createElement('div');
-        card.className = 'item-card';
-        card.innerHTML = `
-            <h3>${build.name}</h3>
-            <p style="margin:8px 0; font-size:14px;">${build.items.join(" • ")}</p>
-            <div class="price">${build.price.toLocaleString('ru-RU')} ₽</div>
-            <button class="add-btn" onclick="alert('сборка выбрана!')">выбрать</button>
-        `;
-        container.appendChild(card);
-    });
+    alert("Готовые сборки будут добавлены в следующей версии");
 }
 
-// ====================== ВИДЕО ПОСОБИЕ ======================
+// видео пособие
 function showVideoGuide() {
     const container = document.getElementById('items');
     container.innerHTML = `
@@ -139,9 +148,4 @@ function showVideoGuide() {
             <p style="margin-top:25px; opacity:0.8;">рекомендуется посмотреть перед первой сборкой</p>
         </div>
     `;
-};
-
-// запуск — по умолчанию показываем процессоры
-window.onload = () => {
-    showCategory('cpu');
-};
+}
