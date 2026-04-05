@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +7,8 @@
 
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
-    background: #0f0f0f;
-    color: #ffffff;
+    background: #0a0a0a;
+    color: #ee9191;
     min-height: 100vh;
     padding: 15px;
 }
@@ -20,8 +21,13 @@ body {
 .header h1 {
     font-size: 28px;
     margin-bottom: 5px;
+    
     background: linear-gradient(90deg, #00bfff, #00ffaa);
-    -webkit-background-clip: text;
+    
+    background-clip: text;
+    -webkit-background-clip: text;     
+    
+    color: transparent;
     -webkit-text-fill-color: transparent;
 }
 
@@ -36,7 +42,7 @@ body {
 .total {
     font-size: 22px;
     font-weight: 700;
-    color: #00ffaa;
+    color: #208664;
     margin-top: 12px;
     text-align: center;
 }
@@ -52,7 +58,7 @@ body {
     background: #252525;
     color: white;
     border: none;
-    padding: 14px 10px;
+    padding: 14px;
     border-radius: 12px;
     font-size: 15px;
     cursor: pointer;
@@ -60,7 +66,7 @@ body {
 }
 
 .categories button:hover {
-    background: #00bfff;
+    background: #395b66;
     transform: translateY(-2px);
 }
 
@@ -83,11 +89,6 @@ body {
     transform: scale(1.03);
 }
 
-.item-card h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-}
-
 .price {
     color: #00ffaa;
     font-weight: 600;
@@ -97,7 +98,7 @@ body {
 .add-btn {
     margin-top: 10px;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: #00bfff;
     color: black;
     border: none;
